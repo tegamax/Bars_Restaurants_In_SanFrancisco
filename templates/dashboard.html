@@ -3,6 +3,12 @@
 {% block heading %}{% endblock %}
 
 {% block body %}
+<!-- this allows dashboard html to link to dashboard.js on the static folder -->
+{% assets "main_js" %}
+<!-- <script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script> -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
 
 
 
@@ -13,3 +19,7 @@
 {% block footer%}
 
 {% endblock %}
+
+</body>
+
+</html>
