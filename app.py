@@ -23,7 +23,7 @@ app = Flask(__name__)
 
 # getting javascript to load on the html files
 
-js = Bundle('dashboard.js', output='gen/main.js')
+js = Bundle('dashboard.js', 'config.js', 'styles.css', output='gen/main.js')
 
 assets = Environment(app)
 
