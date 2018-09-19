@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from flask_assets import Bundle, Environment
+
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -9,7 +9,7 @@ import json
 from pprint import pprint
 
 
-
+# database connection
 engine = create_engine("sqlite:///3rd.db")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
@@ -21,17 +21,7 @@ session = Session(engine)
 
 app = Flask(__name__)
 
-# getting javascript to load on the html files
-
-# js = Bundle('dashboard.js', output='gen/main.js')
-
-# assets = Environment(app)
-
-# assets.register("main_js",js)
-
-
-# routes
-
+# creating routes for all our webpages
 @app.route('/')
 def index_route():
     return render_template('index.html')
@@ -48,7 +38,7 @@ def OtherCharts_route():
 
 @app.route('/data/jsondata')
 def establishments_route():
-
+# this route creates our "api" that we will pull from in our javascript files
     response = session.query(businesses).all()
 
     results = []

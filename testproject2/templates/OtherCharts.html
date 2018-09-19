@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
-{% block heading %}{% endblock %}
+{% block heading %}
+
+
+{% endblock %}
 
 {% block body %}
+<canvas id="lineChart" width="400" height="400"></canvas>
 
-
+ <!-- charts.js -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript" src="static/js/charts.js"></script>
 
 
 {% endblock %}
@@ -13,3 +19,7 @@
 {% block footer%}
 
 {% endblock %}
+
+</body>
+
+</html>
