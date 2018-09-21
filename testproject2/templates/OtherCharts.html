@@ -6,11 +6,35 @@
 {% endblock %}
 
 {% block body %}
-<canvas id="lineChart" width="400" height="400"></canvas>
+<div id = "BarChart"></div></canvas>
 
  <!-- charts.js -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script type="text/javascript" src="static/js/charts.js"></script>
+
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script> -->
+ <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+ <script>
+    var url2 = "/data/jsondata";
+    barchart = document.getElementById('BarChart');
+    d3.json(url2, function(json) {
+        var listn = []
+        var listp = []
+        for (var i =0; i< 10; i++) {
+        listn.push(json[i].Name)
+        listp.push(json[i].Rating)
+        }  
+         console.log(listn)
+         console.log(listp)}  
+         )
+    var data = [
+  {
+    x: ["Foreign Cinema", "Tony's Pizza Napoletana", "Tropisueño", "Bourbon & Branch", "Zero Zero", "El Techo", "Smuggler's Cove", "Roka Akor - San Francisco", "Farmerbrown", "Rickhouse"],
+    y: [4, 4, 4, 4, 4, 4, 4, 4, 3.5, 4]
+    ,
+    type: 'bar',
+    color: 'red',
+  }]
+Plotly.newPlot(barchart, data);
+ </script>
 
 
 {% endblock %}
